@@ -17,9 +17,7 @@
 <!-- About the Project -->
 ## About the Project
 
-<div align="center"> 
-  <img src="aws-sso-screenshot.png" alt="screenshot" />
-</div>
+![ScreenShot](aws-sso-screenshot.png)
 
 
 <!-- Prerequisites -->
