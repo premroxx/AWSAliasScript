@@ -17,7 +17,7 @@
 <!-- About the Project -->
 ## About the Project
 
-![ScreenShot](https://github.com/premroxx/AWSAliasScript/blob/444cfdfc0a3cc1cfd5e1b9d1d30d1475932f70db/aws-sso-screenshot.png)
+![aws-sso-screenshot](https://github.com/premroxx/AWSAliasScript/assets/24833918/ede50bc0-5029-4620-bad4-9158cba803ac)
 
 
 <!-- Prerequisites -->
