@@ -1,16 +1,28 @@
 // ==UserScript==
-// @name     AWSAlias
-// @version  2
+// @name     AWSAccountAliasTab
+// @version  3
 // @grant    none
 // @match https://*.console.aws.amazon.com/*
+// @Edited from: https://gist.github.com/emmanuelnk/c34a361c79c0f3792de533170cbfcd01
 // ==/UserScript==
 (function() {
     'use strict';
     window.setTimeout(() => {
-        const jsonld = JSON.parse(document.querySelector('meta[name="awsc-session-data"]').content)
-        const label = jsonld.accountAlias
-        document.getElementsByClassName('_more-menu__button-content--label_znf2v_148')[3].innerHTML += `/${label}`
-        //const acct = document.getElementsByClassName('_more-menu__button-content--label_znf2v_148')[3].title
-        //document.getElementsByClassName('_more-menu__button-content--label_znf2v_148')[3].innerHTML = `/${acct}`
-    }, 2000);
+        let label = JSON.parse(document.querySelector('meta[name="awsc-session-data"]').content).accountAlias
+        switch(label) {
+            // If Alias is undefined
+            case '0000':
+                label = 'awsAcct'
+                break;
+        }
+        const styleClasses = document.querySelector('[data-testid="more-menu__awsc-nav-regions-menu-button"]').classList
+        const topBarList = document.getElementById('awsc-navigation__more-menu--list')
+        const newTopBarListItem = topBarList.firstChild.cloneNode()
+        const newTopBarListItemTextDiv = document.createElement('div')
+
+        newTopBarListItemTextDiv.classList.add(styleClasses[0])
+        newTopBarListItem.appendChild(document.createTextNode(label))
+        newTopBarListItemTextDiv.appendChild(newTopBarListItem)
+        topBarList.prepend(newTopBarListItemTextDiv)
+    }, 900);
 })();
